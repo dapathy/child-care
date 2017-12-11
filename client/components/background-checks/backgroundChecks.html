@@ -1,0 +1,54 @@
+<template name="accountBackgroundChecks">
+	<a class="btn btn-primary" href="/user/account/orderBackgroundChecks">Order background check</a>
+	<div class="section-title">Background checks</div>
+	{{> backgroundChecks }}
+</template>
+
+<template name="profileBackgroundChecks">
+	<div class="section-title">{{username}}'s background checks</div>
+	{{> backgroundChecks }}
+	<a class="btn btn-default" href="/users/{{username}}">Back</a>
+</template>
+
+<template name="backgroundChecks">
+	{{#if backgroundReports}}
+		<ul id="report-parent" class="list-group">
+			{{#each backgroundReports}}
+				<a href="#" data-target="#breakdown-{{@index}}" data-toggle="collapse" data-parent="#report-parent"
+				   class="list-group-item {{#unless isExpandable this}}pointer not-expandable{{/unless}}">
+
+					<span class="label check-label {{#if $eq result 'clear'}}label-success{{else}}label-warning{{/if}} pull-right">
+						{{#if $eq result 'clear'}}Clear{{else}}Consider{{/if}}
+					</span>
+
+					<h6 class="list-group-item-heading">{{name}}</h6>
+					<p class="list-group-item-text">{{created_at}}</p>
+				</a>
+
+				{{#if isExpandable this}}
+					<div id="breakdown-{{@index}}" class="collapse">
+						<table class="table table-bordered">
+							<thead>
+							<tr>
+								<th>Test</th>
+								<th>Result</th>
+							</tr>
+							</thead>
+							<tbody>
+							{{#each reportBreakdown}}
+								<tr class="{{#if $eq result 'Clear'}}success{{else}}warning{{/if}}">
+									<td>{{name}}</td>
+									<td>{{result}}</td>
+								</tr>
+							{{/each}}
+							</tbody>
+						</table>
+					</div>
+				{{/if}}
+			{{/each}}
+		</ul>
+
+	{{else}}
+		<div style="margin-bottom: 15px">No background checks ordered.</div>
+	{{/if}}
+</template>

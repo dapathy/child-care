@@ -1,0 +1,46 @@
+.message {
+  margin-bottom: 15px;
+}
+
+.message-sender {
+  font-weight: bold;
+}
+
+.message-body {
+  white-space: pre-line;
+  margin-top: -20px;
+}
+
+.message-date {
+  font-weight: lighter;
+}
+
+#conversations {
+  height: calc(100vh - 65px - 80px);
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+#conversation-wrapper {
+  height: calc(100vh - 65px - 80px);
+}
+
+#message-stream-wrapper {
+  height: calc(100vh - 65px - 200px);
+  margin-bottom: 15px;
+  #message-stream {
+	overflow-y: auto;
+	overflow-x: hidden;
+	height: 100%;
+  }
+}
+
+#new-message {
+  	textarea {
+	  border: 2px solid $gray-light;
+	}
+  	button {
+	  float: right;
+	  margin-top: 10px;
+	}
+}

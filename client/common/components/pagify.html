@@ -1,0 +1,19 @@
+<template name="pageify">
+	{{#each item in (sliceCollection collection currentPage limit)}}
+		{{> Template.dynamic template=itemTemplate data=item}}
+	{{/each}}
+
+	{{#if $gt collection.length limit}}
+		<nav aria-label="...">
+			<ul class="pager">
+				{{#unless $eq currentPage 0}}
+					<li id="previous-review"><a href="#">Previous</a></li>
+				{{/unless}}
+
+				{{#unless isLastPage collection.length limit}}
+					<li id="next-review"><a href="#">Next</a></li>
+				{{/unless}}
+			</ul>
+		</nav>
+	{{/if}}
+</template>

@@ -1,0 +1,29 @@
+{
+  "name": "ccc",
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {
+    "babel-runtime": "^6.23.0",
+    "bcrypt": "^0.8.7",
+    "bootstrap-sass": "^3.3.7",
+    "braintree": "^2.0.2",
+    "datatables.net-bs": "^1.10.15",
+    "font-awesome": "^4.7.0",
+    "gm": "^1.23.0",
+    "googlemaps": "^1.12.0",
+    "jquery": "^3.2.1",
+    "meteor-node-stubs": "^0.2.6",
+    "simpl-schema": "^0.3.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://tjdfalcon@bitbucket.org/cccare/ccc.git"
+  },
+  "author": "Tyler Doster",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/cccare/ccc#readme"
+}

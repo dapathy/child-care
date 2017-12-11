@@ -1,0 +1,20 @@
+<template name="myJobPostings">
+	<a class="btn btn-primary" href="{{pathFor 'myJobPostings'}}/create/new">Make new posting</a>
+	<div class="section-title">My job postings</div>
+
+	{{#if myJobPostings}}
+		<ul class="list-group">
+			{{#each myJobPostings}}
+				<a class="list-group-item" href="{{pathFor 'myJobPostings'}}/edit/{{_id}}">
+					<h6 class="list-group-item-heading">{{formatDateUtc startDate}} to {{formatDateUtc expiration}}</h6>
+					<p class="list-group-item-text">{{oneTime}}</p>
+
+					<!--<span class="label pull-right">-->
+					<!--</span>-->
+				</a>
+			{{/each}}
+		</ul>
+	{{else}}
+		<div>No job postings to show.</div>
+	{{/if}}
+</template>

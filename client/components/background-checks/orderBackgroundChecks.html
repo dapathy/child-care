@@ -1,0 +1,36 @@
+<template name="orderBackgroundChecks">
+	<div class="section-title">Order background checks</div>
+
+	<div>
+		<form>
+			<div class="radio">
+				<label>
+					<input type="radio" name="packageOptions" id="bronze-option" value="bronze">
+					Bronze Package:
+					Identity Trace and Sex Offender Check.
+				</label>
+			</div>
+			<div class="radio">
+				<label>
+					<input type="radio" name="packageOptions" id="silver-option" value="silver" checked>
+					Silver Package:
+					Identity Trace, Sex Offender Check, and National Criminal Report.
+				</label>
+			</div>
+
+			<div class="form-group" style="margin-top: 50px">
+				<label for="exampleInputEmail1" class="required">Social Security Number (SSN)</label>
+				<input class="form-control" type="text" id="ssn-input" placeholder="SSN" required/>
+			</div>
+
+			<form id="checkout" method="post" action="/checkout">
+				<div id="dropin-container"></div>
+
+				<div style="margin-top: 15px">
+					<a class="btn btn-default" href="/user/backgroundChecks">Cancel</a>
+					<input type="submit" class="btn btn-primary" value="Order">
+				</div>
+			</form>
+		</form>
+	</div>
+</template>

@@ -1,0 +1,7 @@
+<template name="profilePicture">
+	{{#if profilePicturePath}}
+		<img src="{{pictureBaseURL}}/{{profilePicturePath}}" class="{{profilePictureClass}}">
+	{{else}}
+		<img src="/images/profile_default.png" class="{{profilePictureClass}}"/>
+	{{/if}}
+</template>

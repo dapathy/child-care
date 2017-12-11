@@ -1,0 +1,21 @@
+<template name="appLayout">
+	<!--[if lt IE 9]>
+		<p class="browser-warning"><strong><i class="icon-exclamation-sign"></i> Warning</strong> - You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/" target="_blank">upgrade your browser</a> to properly view this website.</p>
+	<![endif]-->
+
+	{{> _header}}
+
+	<div id="wrapper">
+		{{#if shouldShowSidenav}}
+			<div id="sidebar-wrapper">
+				{{> sidebar}}
+			</div>
+		{{/if}}
+
+		<div id="page-content-wrapper" class="container {{#if shouldShowSidenav}}sidebar-enabled{{/if}}">
+			{{> yield}}
+		</div>
+	</div>
+
+	<!--{{> _footer}}-->
+</template>

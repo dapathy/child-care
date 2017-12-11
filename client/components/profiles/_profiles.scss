@@ -1,0 +1,84 @@
+#name-panel{
+  padding: 15px;
+  text-align: center;
+
+  // immediate children
+  > * {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
+
+#information-panel {
+  margin-top: 100px;
+}
+
+#provider-stat-boxes {
+  text-align: center;
+}
+
+#provider-list-items {
+  margin: 50px auto 0 100px;
+}
+
+.green-check {
+  @extend .fa-check;
+  color: $brand-success;
+}
+
+.red-x {
+  @extend .fa-times;
+  color: $brand-danger;
+}
+
+.profile-picture {
+  max-width: 300px;
+  width: 100%;
+  height: auto;
+}
+
+.profile-picture-update {
+  max-width: 300px;
+  height: auto;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.stat-box {
+  text-align: center;
+  display: inline-block;
+  width: 120px;
+  margin-right: 15px;
+  @extend .panel-box;
+}
+
+.social-media-link {
+  padding: 5px 10px;
+  width: 35px;
+  display: inline-block;
+  -moz-border-radius: 100px;
+  -webkit-border-radius: 100px;
+  border-radius: 100px;
+  -moz-box-shadow: 0 0 2px #888;
+  -webkit-box-shadow: 0 0 2px #888;
+  box-shadow: 0 0 2px #888;
+  background: $gray-lighter;
+}
+.social-media-link:hover {
+  background: $brand-primary;
+  color: white;
+}
+
+#profile-rating {
+  .rating {
+    margin: 0 auto 0 auto;
+  }
+}
+
+.rating {
+  font-family: FontAwesome;
+}
+
+.review {
+  margin-top: 40px;
+}

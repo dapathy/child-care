@@ -1,0 +1,64 @@
+<template name="messages">
+	<div class="row">
+		<!-- Conversations -->
+		<div class="col-sm-4 col-xs-3">
+			<div id="conversations" class="list-group">
+				{{#each conversations}}
+					<a href="#" class="list-group-item conversation-item {{#if isConversationActive this}}active{{/if}}">
+						<div class="row">
+							<div class="col-sm-3">
+								{{> profilePicture profilePicturePath=participant.profile.profilePicture profilePictureClass="profile-picture-thumbnail"}}
+							</div>
+							<div class="col-sm-9">
+								<span class="message-sender">{{participant.username}}</span>
+								<span class="pull-right hidden-xs">{{date}}</span>
+							</div>
+						</div>
+					</a>
+				{{else}}
+					No conversations to display.
+				{{/each}}
+			</div>
+		</div>
+
+		<!-- Selected conversation -->
+		<div id="conversation-wrapper" class="col-sm-8 col-xs-9">
+			{{#if selectedConversation}}
+				<div id="message-stream-wrapper">
+					<div id="message-stream">
+						{{#each messages}}
+							<div class="message">
+								<div class="row">
+									<div class="col-xs-2">
+										{{> profilePicture profilePicturePath=user.profile.profilePicture profilePictureClass="profile-picture-thumbnail"}}
+									</div>
+									<div class="col-xs-6">
+										<div class="message-sender">{{user.username}}</div>
+										<div class="message-body">
+											{{body}}
+										</div>
+									</div>
+									<div class="col-sm-4">
+										<spam class="message-date">{{date}}</spam>
+									</div>
+								</div>
+							</div>
+
+						{{else}}
+							No messages.
+						{{/each}}
+					</div>
+				</div>
+				<div id="new-message-wrapper">
+					<div id="new-message">
+						<textarea id="new-message-text" class="form-control" rows="3"></textarea>
+						<button id="new-message-button" class="btn btn-primary">Send</button>
+					</div>
+				</div>
+
+			{{else}}
+				No conversation selected.
+			{{/if}}
+		</div>
+	</div>
+</template>

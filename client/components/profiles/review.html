@@ -1,0 +1,18 @@
+<template name="review">
+	<div class="section-title">Write your review</div>
+	{{#autoForm id="reviewForm" collection=ReviewsCollection}}
+		<fieldset>
+			<div style="margin-bottom: 10px">
+				<label class="control-label required">Rating</label>
+				{{> starsRating id='rating-control' class="rating" star='\\f005' size='lg' mutable=true}}
+			</div>
+
+			{{> afQuickField name="description" label-class="required"}}
+		</fieldset>
+	{{/autoForm}}
+
+	<div>
+		<button id="cancel-review-button" class="btn btn-default">Cancel</button>
+		<button id="create-review-button" class="btn btn-primary">Save</button>
+	</div>
+</template>

@@ -1,0 +1,137 @@
+<template name="profileView">
+	<div class="row">
+
+		<!-- Side bar -->
+		<div class="col-sm-3">
+			<div id="name-panel" >
+				<div>
+					<!-- Profile Picture -->
+					{{> profilePicture profilePicturePath=profile.profilePicture profilePictureClass="profile-picture"}}
+				</div>
+
+				{{#if isCurrentUser}}
+					<a class="btn btn-primary btn-block" href="/user/profileUpdate">Update Profile</a>
+				{{/if}}
+				<h2>{{profile.firstName}} {{profile.lastName}}</h2>
+
+				<div>
+					{{#if profile.socialMedia.facebook}}
+						<a href="{{profile.socialMedia.facebook}}" target="_blank" class="social-media-link"><i class="fa fa-facebook"></i></a>
+					{{/if}}
+					{{#if profile.socialMedia.linkedIn}}
+						<a href="{{profile.socialMedia.linkedIn}}" target="_blank" class="social-media-link"><i class="fa fa-linkedin"></i></a>
+					{{/if}}
+					{{#if profile.socialMedia.twitter}}
+						<a href="{{profile.socialMedia.twitter}}" target="_blank" class="social-media-link"><i class="fa fa-twitter"></i></a>
+					{{/if}}
+				</div>
+
+				<div id="profile-rating">
+					{{> starsRating class="rating" star='\\f005' rating=totalRating size='lg'}}
+				</div>
+
+				<h6>{{profile.primaryChurch.name}}</h6>
+
+				{{#unless isCurrentUser}}
+					<button id="message-button" class="btn btn-primary btn-block">Message</button>
+				{{/unless}}
+
+				{{#if isNonSeeker}}
+					<a class="btn btn-default btn-block wrap" href="/users/{{username}}/backgroundChecks">View background checks</a>
+				{{/if}}
+			</div>
+		</div>
+
+		<!-- Main panel -->
+		<div class="col-sm-9">
+			<div id="information-panel">
+
+				<!-- Provider profile section -->
+				{{#if isNonSeeker}}
+					<!-- Stat boxes -->
+					<div>
+						<div id="provider-stat-boxes">
+							<div class="stat-box">
+								<div>Hourly rate:</div>
+								<h5>${{profile.providerProfile.hourlyRate}}</h5>
+							</div>
+							<div class="stat-box">
+								<div>Age:</div>
+								<h5>{{age}}</h5>
+							</div>
+							<div class="stat-box">
+								<div>Endorsements:</div>
+								<h5>{{#if profile.providerProfile.readOnly.endorsements}}{{profile.providerProfile.readOnly.endorsements}}{{else}}0{{/if}}</h5>
+							</div>
+						</div>
+					</div>
+
+					<!-- Bullets -->
+					<div class="row">
+						<div id="provider-list-items">
+							<div class="col-sm-6">
+								<ul class="fa-ul">
+									<li><i class="fa-li fa {{#if profile.providerProfile.readOnly.churchVerified}}green-check{{else}}red-x{{/if}}"></i>Church verified</li>
+									<li><i class="fa-li fa {{#if profile.providerProfile.readOnly.firstAidCertified}}green-check{{else}}red-x{{/if}}"></i>First aid certified</li>
+									<li><i class="fa-li fa {{#if profile.providerProfile.readOnly.cprCertified}}green-check{{else}}red-x{{/if}}"></i>CPR certified</li>
+								</ul>
+							</div>
+							<div class="col-sm-6">
+								<ul class="fa-ul">
+									<li><i class="fa-li fa {{#if profile.providerProfile.likesPets}}green-check{{else}}red-x{{/if}}"></i>Comfortable with pets</li>
+									<li><i class="fa-li fa fa-circle"></i>Education: {{profile.providerProfile.education}}</li>
+									<li><i class="fa-li fa fa-circle"></i>Acceptable payment methods: </li>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+					<!-- Availability -->
+					{{#if profile.providerProfile.generalAvailability}}
+						<div>
+							<div class="section-title">General availability</div>
+							<p>{{profile.providerProfile.generalAvailability}}</p>
+						</div>
+					{{/if}}
+				{{/if}}
+				<!-- End provider stuff -->
+
+				<!-- Bio -->
+				{{#if profile.bio}}
+					<div>
+						<div class="section-title">Bio</div>
+						<p>{{profile.bio}}</p>
+					</div>
+				{{/if}}
+
+				<!-- Reviews -->
+				<div>
+					<div class="section-title">Reviews</div>
+					{{#unless isCurrentUser}}
+						<div>
+							<a class="btn btn-default pull-right" href="/users/{{username}}/review">Create review</a>
+						</div>
+					{{/unless}}
+
+					{{#if reviews}}
+						{{> pageify collection=reviews limit=5 itemTemplate="reviewTemplate"}}
+					{{else}}
+						<div>Not reviewed yet.</div>
+					{{/if}}
+				</div>
+			</div>
+		</div>
+	</div>
+</template>
+
+<template name="reviewTemplate">
+	<div class="review">
+		<div>
+			<span>{{> starsRating class="rating" star='\\f005' rating=rating size='lg'}}</span>
+			<span>Review by: </span>
+			<span style="font-weight: bold">{{reviewerUsername}}</span>
+			<span> on {{formatDateUtc date}}</span>
+		</div>
+		<p>{{description}}</p>
+	</div>
+</template>

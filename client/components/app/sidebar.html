@@ -1,0 +1,20 @@
+<template name="sidebar">
+	<ul class="sidebar-nav nav-pills nav-stacked" id="menu">
+		<li class="sidebar-item {{#if isItemActive 'messages'}}active{{/if}}">
+			<a href="{{pathFor 'messages'}}"><span class="fa-stack fa-lg pull-left"><i class="fa fa-envelope fa-stack-1x"></i></span>Messages</a>
+		</li>
+
+		{{#if isNonSeeker}}
+			<li class="sidebar-item {{#if isItemActive 'findJobPostings'}}active{{/if}}">
+				<a href="{{pathFor 'findJobPostings'}}"><span class="fa-stack fa-lg pull-left"><i class="fa fa-search fa-stack-1x"></i></span>Browse Job Postings</a>
+			</li>
+		{{else}}
+			<li class="sidebar-item {{#if isItemActive 'findProviders'}}active{{/if}}">
+				<a href="{{pathFor 'findProviders'}}"><span class="fa-stack fa-lg pull-left"><i class="fa fa-male fa-stack-1x"></i></span>Browse Providers</a>
+			</li>
+			<li class="sidebar-item {{#if isItemActive 'myJobPostings'}}active{{/if}}">
+				<a href="{{pathFor 'myJobPostings'}}"><span class="fa-stack fa-lg pull-left"><i class="fa fa-cart-plus fa-stack-1x"></i></span>My Job Postings</a>
+			</li>
+		{{/if}}
+	</ul>
+</template>

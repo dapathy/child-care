@@ -1,0 +1,171 @@
+.navbar {
+  margin-bottom: 0;
+  border-top: 1px solid $gray-lighter;
+}
+
+.nav-logo {
+  max-width: 70px;
+  height: auto;
+  margin-top: -15px;
+  display: inline !important;
+}
+
+// Overriding bootstrap media queries
+#user-dropdown {
+	float: right !important;
+	margin-right: 15px;
+
+  .dropdown-menu {
+	right: 0;
+	left: auto;
+  }
+
+  .open .dropdown-menu{
+	  position: absolute;
+	  background-color: #fff;
+	  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+  }
+}
+
+// Sidebar
+#wrapper {
+  padding-left: 0;
+}
+
+#wrapper.toggled {
+  padding-left: 250px;
+}
+
+#sidebar-wrapper {
+  z-index: 1000;
+  position: absolute;
+  left: 250px;
+  width: 0;
+  height: 100%;	// overridden in javascript
+  margin-left: -250px;
+  overflow-y: auto;
+  background: #000;
+
+  // Only animate width.
+  -webkit-transition: width 0.3s ease;
+  -moz-transition: width 0.3s ease;
+  transition: width 0.3s ease;
+}
+#wrapper.toggled #sidebar-wrapper {
+  width: 250px;
+}
+
+// Main View
+#page-content-wrapper {
+  padding: 15px 10px 20px 10px;
+}
+.xyz{
+  min-width: 360px;
+}
+#wrapper.toggled #page-content-wrapper {
+  position: relative;
+  margin-right: 0;
+}
+.fixed-brand{
+  width: auto;
+}
+
+// Sidebar Styles defaults
+// and mobile if not overridden later
+.sidebar-nav {
+  position: absolute;
+  top: 0;
+  width: 250px;
+  padding: 0;
+  list-style: none;
+  margin: 2px 0 0;
+}
+
+.sidebar-nav li {
+  text-indent: 15px;
+  line-height: 40px;
+}
+
+.sidebar-nav li a {
+  display: block;
+  text-decoration: none;
+  color: #999999;
+}
+
+.sidebar-nav li a:hover {
+  text-decoration: none;
+  color: #fff;
+  background: rgba(255,255,255,0.2);
+  //border-left: red 2px solid;
+}
+
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+  text-decoration: none;
+}
+
+.sidebar-nav > .sidebar-brand {
+  height: 65px;
+  font-size: 18px;
+  line-height: 60px;
+}
+
+.sidebar-nav > .sidebar-brand a {
+  color: #999999;
+}
+
+.sidebar-nav > .sidebar-brand a:hover {
+  color: #fff;
+  background: none;
+}
+.no-margin{
+  margin:0;
+}
+
+// Non-mobile stuff
+@media(min-width: $screen-sm) {
+  .fixed-brand{
+	width: 250px;
+  }
+  #wrapper.toggled {
+	padding-left: 0;
+  }
+
+  #sidebar-wrapper {
+	width: 250px;
+  }
+
+  #wrapper.toggled #sidebar-wrapper {
+	width: 250px;
+  }
+  #wrapper.toggled-2 #sidebar-wrapper {
+	width: 50px;
+  }
+  #wrapper.toggled-2 #sidebar-wrapper:hover {
+	width: 250px;
+  }
+
+  #wrapper.toggled #page-content-wrapper {
+	position: relative;
+	margin-right: 0;
+  }
+  #wrapper.toggled-2 #page-content-wrapper {
+	position: relative;
+	margin-right: 0;
+	margin-left: -200px;
+	width: auto;
+  }
+}
+
+// Ensures page content doesn't collide with sidebar.
+.sidebar-enabled {
+  @media(max-width: 1700px) {
+	padding-left: 100px !important;
+  }
+  @media(max-width: 1500px) {
+	padding-left: 250px !important;
+  }
+  @media(max-width: $screen-sm) {
+	padding-left: 10px !important;
+  }
+}

@@ -1,0 +1,46 @@
+<template name="findProviders">
+	<div class="filter-bar">
+		<form class="form-inline">
+			{{#autoForm id="provider-filter-bar" collection="Meteor.users" type="normal"}}
+				<fieldset>
+					{{> afQuickField name="profile.providerProfile.gender" options="allowed"}}
+				</fieldset>
+			{{/autoForm}}
+			<div class="form-group">
+				<div id="church-dropdown" class="dropdown">
+					<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+						Church: {{selectedChurch.name}}
+						<span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu">
+						<li><a href="#">None</a></li>
+						{{#each churches}}
+							<li><a href="#">{{name}} ({{count}})</a></li>
+						{{/each}}
+					</ul>
+				</div>
+			</div>
+			<div class="form-group">
+				{{> distanceDropdown selectedMaxDistance=selectedMaxDistance}}
+			</div>
+		</form>
+	</div>
+
+	{{#if providers}}
+		<div>
+			<ul class="list-group">
+				{{#each providers}}
+					<a class="list-group-item" href="/users/{{username}}">
+						<h6 class="list-group-item-heading">{{profile.firstName}} {{profile.lastName}}</h6>
+						<!--<p class="list-group-item-text">{{oneTime}}</p>-->
+
+						<!--<span class="label pull-right">-->
+						<!--</span>-->
+					</a>
+				{{/each}}
+			</ul>
+		</div>
+	{{else}}
+		<div>No providers in your area.</div>
+	{{/if}}
+</template>

@@ -1,0 +1,26 @@
+// COLORS
+$brand-primary:         #5AADE1;
+$brand-success:         #A1CD80;
+$brand-info:            $brand-primary;
+$brand-warning:         #FFB75C;
+$brand-danger:          #F16A70;
+
+//Original:
+//00A0F0, FF8900
+
+// GRAYS
+$gray-light:             #9A9EAB;
+
+$gray-base:              #000;
+$gray-darker:            lighten($gray-base, 13.5%);
+$gray-dark:              lighten($gray-base, 20%);
+$gray:				     darken($gray-light, 20%);
+//$gray-light:             lighten($gray, 20%);
+$gray-lighter:           lighten($gray, 48%); //33
+
+// OTHER STUFF
+//$navbar-default-bg:  	 $gray-lighter;
+
+.nav-tabs {
+  border-bottom: 1px solid $gray-lighter !important;
+}

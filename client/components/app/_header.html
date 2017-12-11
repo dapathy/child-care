@@ -1,0 +1,53 @@
+<template name="_header">
+
+  <nav id="navbar" class="navbar navbar-default navbar-static-top" role="navigation">
+    <div class="container">
+
+      <div class="navbar-header pull-left">
+	  	{{#if shouldShowSidenav}}
+			<button type="button" class="navbar-toggle" id="menu-toggle" style="float: left">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+		{{/if}}
+
+        <a class="navbar-brand" href="{{pathFor 'home'}}">
+			<img alt="Brand" src="/images/logo.jpg" class="nav-logo"/>
+			{{#if isNotHome}}
+				<span class="brand-title hidden-xs">
+					<span>CHRISTIAN</span>
+					<span>CHILD</span>
+					<span>CARE</span>
+				</span>
+			{{/if}}
+		</a>
+      </div>
+
+      <div>
+        {{#if currentUser}}
+          <ul id="user-dropdown" class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <i class="fa fa-user"></i> {{ currentUser.username }} <i class="fa fa-caret-down"></i>
+              </a>
+              <ul class="dropdown-menu" role="menu">
+				<li><a href="/users/{{ currentUser.username }}"><i class="fa fa-user"></i> View Profile</a></li>
+			  	<li><a href="/user/account"><i class="fa fa-lock"></i> Account</a></li>
+                <li><a href="#" data-action="logout"><i class="fa fa-sign-out"></i> Sign Out</a></li>
+              </ul>
+            </li>
+          </ul>
+        {{else}}
+          <div class="navbar-right">
+            <a href="{{ pathFor 'atSignIn' }}" class="btn btn-default navbar-btn" style="margin-left: 5px">Sign in</a>
+            <a href="{{ pathFor 'atSignUp' }}" class="btn btn-primary navbar-btn">Register</a>
+          </div>
+        {{/if}}
+      </div>
+
+    </div>
+  </nav>
+
+</template>

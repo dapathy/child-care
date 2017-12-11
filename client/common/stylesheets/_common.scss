@@ -1,0 +1,110 @@
+// Transition everything!!!
+* {
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+// For required form fields.
+.required:before {
+	content: '* ';
+	color: $brand-danger;
+}
+
+// Line break
+hr {
+  display: block;
+  height: 1px;
+  width: 65%;
+  border: 0;
+  border-top: 1px solid $gray;
+  margin: 1em auto 1em auto;
+  padding: 0;
+}
+
+.wrap {
+  white-space: normal;
+}
+
+@mixin box-shadow ($value) {
+  -webkit-box-shadow: $value $value $value*4 rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: $value $value $value*4 rgba(0, 0, 0, 0.4);
+  box-shadow: $value $value $value*4 rgba(0, 0, 0, 0.4);
+}
+
+// base class used by a lot of stuff
+.panel-box {
+  background: $gray-lighter;
+  border-radius: 3px;
+  @include box-shadow(1px);
+}
+
+.clear {
+  clear: both;
+}
+
+.pointer {
+  cursor: default;
+}
+
+.full-width {
+  margin: 0px -1000px 0px -1000px;
+  padding: 0 1000px 0 1000px;
+}
+
+.brand-title {
+  font-weight: 500;
+  letter-spacing: 2px;
+  color: $brand-primary;
+  :nth-child(2) {
+    color: $gray-light;
+  }
+}
+
+.section-title {
+  @extend .h5;
+  border-bottom: 2px solid $gray;
+  padding-bottom: 15px;
+  margin: 50px 0 30px 0;
+}
+.section-title.first{
+  margin-top: 20px;
+}
+
+// overrides default
+.at-title {
+  h3 {
+    @extend .section-title;
+    text-align: inherit;
+  }
+}
+
+.at-form-format {
+  .at-form {
+    padding: 0;
+    overflow: inherit;
+  }
+}
+
+// file upload button
+.btn-file {
+  position: relative;
+  overflow: hidden;
+}
+.btn-file input[type=file] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  text-align: right;
+  opacity: 0;
+  background: none repeat scroll 0 0 transparent;
+  cursor: inherit;
+  display: block;
+}
+/* IE 10 fix */
+.btn-file ::-ms-browse {
+  width:100%;
+  height:100%;
+}

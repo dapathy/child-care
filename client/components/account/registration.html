@@ -1,0 +1,30 @@
+<template name="registration">
+	{{#autoForm id="registrationForm" collection="Meteor.users" doc=currentUser type="method-update" meteormethod="updateUser" autosave=false}}
+		<fieldset>
+			{{#if $eq registrationState 0}}
+				<div class="section-title">First, some basic info</div>
+
+				{{#unless hasUserType}}
+					{{> afQuickField name="profile.userType" label-class="required"}}
+				{{/unless}}
+
+				{{> basicInfoUpdate}}
+				{{> profilePictureUpdate}}
+				<button type="submit" class="btn btn-primary pull-right registration-submit">Next</button>
+			{{/if}}
+
+			{{#if $eq registrationState 1}}
+				<div class="section-title">Next, some other stuff</div>
+				{{> providerInfoUpdate}}
+				<button type="submit" class="btn btn-primary pull-right registration-submit">Next</button>
+			{{/if}}
+
+			{{#if $eq registrationState 2}}
+				<div class="section-title">Finally, some contact info</div>
+				{{> contactInfoUpdate}}
+				<button type="submit" class="btn btn-primary pull-right registration-submit">Finish!</button>
+			{{/if}}
+
+		</fieldset>
+	{{/autoForm}}
+</template>

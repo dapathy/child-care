@@ -1,0 +1,48 @@
+<template name="accountManagementUpdate">
+
+	<h5 class="pull-right" style="font-weight: 200">Changes are saved automatically.</h5>
+
+	<!-- Email verification -->
+	{{#unless isEmailVerified}}
+		<div class="at-form-format clear">
+			{{> atForm state='resendVerificationEmail'}}
+		</div>
+	{{/unless}}
+
+	<!-- Contact info -->
+	{{#autoForm id="accountUpdateForm" collection="Meteor.users" doc=currentUser type="method-update" meteormethod="updateUser" autosave=true}}
+		<fieldset class="clear">
+			<div class="section-title first">Contact info</div>
+			{{> contactInfoUpdate}}
+		</fieldset>
+	{{/autoForm}}
+
+	<!-- Change password -->
+	<div class="at-form-format">
+		{{> atForm state='changePwd'}}
+	</div>
+
+	<!-- Account status -->
+	<div class="section-title">Account status</div>
+	<div style="margin-bottom: 10px">Account status: <span style="font-weight: bold">{{userStatus}}</span></div>
+
+	{{#if $eq currentUser.status 'good'}}
+		<button class="btn btn-danger" data-action="hideAccount">Hide account</button>
+		<span>Hide your account from all listings.</span>
+	{{else}}
+		<button class="btn btn-warning" data-action="showAccount">Show account</button>
+		<span>Your account is currently hidden from all listings.</span>
+	{{/if}}
+</template>
+
+<template name="contactInfoUpdate">
+	{{> afQuickField name="privateProfile.address.street" label-class="required"}}
+	{{> afQuickField name="privateProfile.address.street2"}}
+	{{> afQuickField name="privateProfile.address.city" label-class="required"}}
+	{{> afQuickField name="privateProfile.address.country" options="allowed" label-class="required"}}
+	{{#if afFieldValueIs name="privateProfile.address.country" value="United States"}}
+		{{> afQuickField name="privateProfile.address.state" options="allowed" label-class="required"}}
+	{{/if}}
+	{{> afQuickField name="privateProfile.address.zipCode" label-class="required"}}
+	{{> afQuickField name="privateProfile.phoneNumber"}}
+</template>

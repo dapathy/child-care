@@ -1,0 +1,28 @@
+@import 'bootstrap/bootstrap-customizations';
+@import 'bootstrap/font-awesome';
+@import 'bootstrap/bootstrap';
+@import "bootstrap/toastr-cutomizations";
+
+
+@import "common";
+@import "../../components/app/_navbars";
+@import "../../components/home/_home";
+@import "../../components/profiles/_profiles";
+@import "../../components/background-checks/_background-checks";
+@import "../../components/jobs/_jobPostings";
+@import "../../components/messaging/_messages";
+
+// MAIN CONTAINERS
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.profile-picture-thumbnail {
+  width: 100%;
+  height: auto;
+  min-width: 40px;
+}

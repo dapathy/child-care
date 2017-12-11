@@ -1,0 +1,42 @@
+<template name="editJobPosting">
+	<div class="section-title">{{method}} job posting</div>
+
+	<!-- Create form -->
+	{{#if $eq method 'Create'}}
+		{{#autoForm id="createJobPostingForm" collection=JobPostingsCollection type="method" meteormethod="createJobPosting"}}
+			<fieldset>
+				{{> jobPostingForm}}
+
+				<div>
+					<a type="button" class="btn btn-default" href="{{pathFor 'myJobPostings'}}">Cancel</a>
+					<button id="create-job-posting-button" type="submit" class="btn btn-primary">Save</button>
+				</div>
+			</fieldset>
+		{{/autoForm}}
+
+	<!-- Edit form -->
+	{{else}}
+		{{#autoForm id="updateJobPostingForm" collection=JobPostingsCollection doc=selectedJobPosting type="method-update" meteormethod="updateJobPosting"}}
+			<fieldset>
+				{{> jobPostingForm}}
+
+				<div>
+					<a type="button" class="btn btn-default" href="{{pathFor 'myJobPostings'}}">Cancel</a>
+					<button id="delete-job-posting-button" type="button" class="btn btn-danger">Remove</button>
+					<button id="edit-job-posting-button" type="submit" class="btn btn-primary">Save</button>
+				</div>
+			</fieldset>
+		{{/autoForm}}
+	{{/if}}
+</template>
+
+<template name="jobPostingForm">
+	{{> afQuickField name="summary" placeholder="Monday, Wednesday, Friday from 6pm to 10pm." label-class="required"}}
+	{{> afQuickField name="oneTime" options="allowed" label-class="required"}}
+	{{> afQuickField id="start-date" name="startDate" type="bootstrap-datepicker" label-class="required"}}
+
+	<!-- Only show expiration field for recurring jobs. -->
+	{{#if afFieldValueIs name="oneTime" value="Recurring"}}
+		{{> afQuickField id="expiration-date" name="expiration" type="bootstrap-datepicker" label-class="required"}}
+	{{/if}}
+</template>

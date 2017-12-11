@@ -1,0 +1,19 @@
+<template name="payments">
+	<div class="section-title">Payment history</div>
+	{{#if previousPayments}}
+		<ul class="list-group">
+			{{#each previousPayments}}
+				<li class="list-group-item">
+					<span class="label check-label {{#if $eq status 'Settled'}}label-success{{else}}label-warning{{/if}} pull-right">
+						{{status}}
+					</span>
+
+					<h6 class="list-group-item-heading">${{amount}} to {{merchantAccountId}}</h6>
+					<p class="list-group-item-text">{{createdAt}}</p>
+				</li>
+			{{/each}}
+		</ul>
+	{{else}}
+		<div>No payments to show.</div>
+	{{/if}}
+</template>

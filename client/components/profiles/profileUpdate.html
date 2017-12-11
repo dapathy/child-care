@@ -1,0 +1,65 @@
+<template name="profileUpdate">
+
+	<h5 class="pull-right" style="font-weight: 200">Changes are saved automatically.</h5>
+
+	<a class="btn btn-primary" href="/users/{{currentUser.username}}">Go to Profile</a>
+
+	{{#autoForm id="profileUpdateForm" collection="Meteor.users" doc=currentUser type="method-update" meteormethod="updateUser" autosave=true}}
+		<fieldset class="clear">
+			<div class="section-title first">Basic info</div>
+			{{> basicInfoUpdate}}
+
+			<!-- Profile picture -->
+			{{> profilePictureUpdate}}
+
+			{{#if isNonSeeker}}
+				<div class="section-title">Provider info</div>
+				{{> providerInfoUpdate}}
+			{{/if}}
+
+			<div class="section-title">Links to your social media profiles</div>
+			{{> afQuickField name="profile.socialMedia.facebook"}}
+			{{> afQuickField name="profile.socialMedia.linkedIn"}}
+			{{> afQuickField name="profile.socialMedia.twitter"}}
+
+		</fieldset>
+	{{/autoForm}}
+</template>
+
+<!-- HELPER TEMPLATES -->
+
+<template name="basicInfoUpdate">
+	{{> afQuickField name="profile.firstName" label-class="required"}}
+	{{> afQuickField name="profile.lastName" label-class="required"}}
+	<div class="form-group">
+		<label class="control-label" style="display: block">Primary church</label>
+		<input type="text" class="form-control" id="primary-church-field" data-toggle="popover" data-placement="left" data-trigger="focus" data-content="Start typing to search for churches. Only churches selected from the dropdown will be saved.">
+	</div>
+	{{> afQuickField name="profile.bio" rows="3"}}
+</template>
+
+<template name="providerInfoUpdate">
+	{{> afQuickField name="profile.providerProfile.birthday" label-class="required"}}
+	{{> afQuickField name="profile.providerProfile.gender" options="allowed"}}
+	{{> afQuickField name="profile.providerProfile.hourlyRate"}}
+	{{> afQuickField name="profile.providerProfile.education" options="allowed"}}
+	{{> afQuickField name="profile.providerProfile.likesPets"}}
+	{{> afQuickField name="profile.providerProfile.generalAvailability" rows=3 placeholder='I\'m available Tuesday and Thursday evenings and anytime on Saturday.'}}
+</template>
+
+<template name="profilePictureUpdate">
+	<label class="control-label" style="display: block">Profile picture</label>
+	{{#if currentUser.profile.profilePicture}}
+		<img src="{{pictureBaseURL}}/{{currentUser.profile.profilePicture}}" class="profile-picture-update">
+		<button id="remove-profile-picture" class="btn btn-danger">
+			<i class="fa fa-times"></i> Remove
+		</button>
+	{{else}}
+		<img src="/images/profile_default.png" class="profile-picture-update">
+	{{/if}}
+	<div class="btn btn-default btn-file">
+		<i class="fa fa-folder-open"></i>
+		<span> Browse</span>
+		<input type="file" name="profilePicture" class="fileBrowse">
+	</div>
+</template>

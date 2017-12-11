@@ -1,0 +1,37 @@
+<template name="settings">
+
+	{{#unless isEmailVerified}}
+		<div class="alert alert-warning" role="alert">
+			<i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+			<span>Please check your email to verify your account, or go to the <a id="account-link" href="/user/account">Account page</a> to resend the email.</span>
+		</div>
+	{{/unless}}
+
+	<!-- Nav tabs -->
+	<ul id="settings-tabs" class="nav nav-tabs" style="margin-bottom: 30px" role="tablist">
+		<li role="presentation"><a href="#account" aria-controls="account" role="tab" data-toggle="tab">Account</a></li>
+		<li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
+		{{#if isNonSeeker}}
+			<li role="presentation"><a href="#background-checks" aria-controls="background-checks" role="tab" data-toggle="tab">Background checks</a></li>
+		{{/if}}
+		<li role="presentation"><a href="#payments" aria-controls="payments" role="tab" data-toggle="tab">Payments</a></li>
+	</ul>
+
+	<!-- Tab panes -->
+	<div class="tab-content">
+		<div role="tabpanel" class="tab-pane" id="account">
+			{{> accountManagementUpdate}}
+		</div>
+		<div role="tabpanel" class="tab-pane" id="profile">
+			{{> profileUpdate}}
+		</div>
+		{{#if isNonSeeker}}
+			<div role="tabpanel" class="tab-pane" id="background-checks">
+				{{> accountBackgroundChecks}}
+			</div>
+		{{/if}}
+		<div role="tabpanel" class="tab-pane" id="payments">
+			{{> payments}}
+		</div>
+	</div>
+</template>

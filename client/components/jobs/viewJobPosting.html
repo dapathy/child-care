@@ -1,0 +1,19 @@
+<template name="viewJobPosting">
+	<div class="section-title">Job posting</div>
+
+	<div>
+		{{#with jobPosting}}
+			<div>Posted by: {{username}}</div>
+			<div>Summary: {{summary}}</div>
+			<div>Church: {{primaryChurch.name}}</div>
+			<div>This job is: {{oneTime}}</div>
+			<div>Start date: {{formatDateUtc startDate}}</div>
+			<div>Expiration date: {{formatDateUtc expiration}}</div>
+		{{/with}}
+	</div>
+
+	<div style="margin-top: 10px">
+		<a href="{{pathFor 'findJobPostings'}}" class="btn btn-default">Back</a>
+		<button id="contact-provider-button" class="btn btn-primary">Send Message</button>
+	</div>
+</template>
