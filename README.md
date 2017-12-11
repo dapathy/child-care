@@ -2,13 +2,13 @@
 
 ## Tech Stack
 
-###Front end:
+### Front end:
 
 - Blaze
 - Bootstrap
 - Other small stuff
 
-###Back end:
+### Back end:
 - Meteor
   - NodeJS
   - MongoDB
