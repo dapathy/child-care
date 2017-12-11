@@ -1,4 +1,4 @@
-# CCC
+# Child Care web application (no longer in development)
 
 ## Tech Stack
 
