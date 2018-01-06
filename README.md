@@ -1,14 +1,19 @@
 # Child Care web application (no longer in development)
 
-## Tech Stack
+## Description
 
-### Front end:
+Child care site complete with
+- account creation (OAUTH)
+- Messaging
+- Background check ordering system
+- Payments
+- Job posting and searching
 
+## Built with
+
+- Meteor
+- MongoDB
 - Blaze
 - Bootstrap
-- Other small stuff
-
-### Back end:
-- Meteor
-  - NodeJS
-  - MongoDB
+- Braintree
+- Onfido
